@@ -1,11 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { querySqlite } from './lib/gtfsQuery.js';
 
 export const env = dotenv.config().parsed;
 
 const app = express();
-const port = env?.PORT;
 
 app.use(cors());
 
@@ -17,6 +17,11 @@ app.get('/routes', (req, res) => {
 	res.send('Welcome to routes');
 });
 
-app.listen(4000, async () => {
-	console.log(`Example app listening on port ${port}`);
+app.get('/getRoutes', async (req, res) => {
+	const allRoutes = await querySqlite('select * from routes');
+	res.send(JSON.stringify(allRoutes));
+});
+
+app.listen(env.NODE_PORT, async () => {
+	console.log(`Example app listening on port ${env.NODE_PORT}`);
 });
