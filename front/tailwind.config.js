@@ -3,14 +3,10 @@ module.exports = {
   theme: {
     colors: {
       white: '#ffffff',
-      alabaster: '#F6EFE7',
-      ltOrange: '#F6D69F',
-      orange: '#FDAF29',
-      dkBlue: '#1B293D',
-      blue: '#1A5DB4',
-      darkened: 'rgba(102, 102, 102, 0.384)',
-      darkPurple: '#24283d',
-      black: '#000000',
+      red: '#B44949',
+      black: '#000',
+      grey: '#C4C4C4',
+      blue: '#007be5'
     },
     extend: {},
   },

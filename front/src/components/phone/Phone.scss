@@ -1,0 +1,8 @@
+.phone-container{
+	@apply border-black border-8 flex align-middle mx-auto rounded-2xl;
+	height: 1000px;
+	width: 500px;
+	.notch{
+		@apply bg-black h-4 w-44 mx-auto rounded-b-xl;
+	}
+}
