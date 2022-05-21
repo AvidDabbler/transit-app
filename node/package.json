@@ -8,7 +8,7 @@
     "build:dev": "tsc --watch --preserveWatchOutput",
     "dev": "concurrently \"npm:build:dev\" \"npm:start:dev\"",
 		"gtfs-import": "gtfs-import --configPath src/config/gtfs.json",
-		"gtfs-export": "node ./maintenance/gtfsExport.js"
+		"gtfs-export": "gtfs-export --configPath src/config/gtfs.json"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,4 @@
+trip_id,route_id,service_id,trip_headsign,trip_short_name,direction_id,block_id,shape_id,wheelchair_accessible,bikes_allowed
+1003,R3,FULLW,Route 3 Headsign,,0,,aShape,,
+1002,R2,FULLW,Route 2 Headsign,,0,,aShape,,
+1001,R1,FULLW,Route 1 Headsign,,0,,aShape,,
