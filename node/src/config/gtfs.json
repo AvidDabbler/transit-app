@@ -1,0 +1,9 @@
+{
+	"sqlitePath": "src/db/gtfs.db",
+	"agencies": [
+		{
+			"path": "gtfs.zip"
+		}
+	],
+	"exportPath": "../gtfs/export"
+}

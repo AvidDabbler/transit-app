@@ -1,0 +1,11 @@
+stop_id,stop_name,stop_desc,zone_id,stop_url,stop_lat,stop_lon
+1,Magnolia Ave / S Kingshighway Blvd,,,,38.609692,-90.267866
+2,Magnolia Ave / Tower Grove Ave,,,,38.608689,-90.25759
+3,S Grand Blvd / Magnolia Ave,,,,38.606745,-90.241637
+4,Arsenal St / S Grand Blvd,,,,38.602998,-90.243062
+5,Arsenal St / Bent Ave,,,,38.604431,-90.258328
+6,Arsenal St / S Kingshighway Blvd,,,,38.605134,-90.268497
+7,Arsenal St / Alfred Ave,,,,38.604945,-90.263773
+8,Magnolia Ave / Lawrence St,,,,38.607894,-90.24918
+9,Arsenal St / Gustine Ave,,,,38.603638,-90.249997
+10,Magnolia Ave / Alfred Ave,,,,38.609202,-90.262905
