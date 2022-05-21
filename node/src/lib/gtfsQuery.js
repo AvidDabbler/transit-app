@@ -1,7 +1,7 @@
 import sqlite3 from 'sqlite3';
 import { env } from '../index.js';
-import { getStoptimes, openDb, getStops as gs } from 'gtfs';
-import { updateStopTimes } from './stopTimes.js';
+import { getStops, getStoptimes, openDb } from 'gtfs';
+import { joinTimesAndLocations, updateStopTimes } from './stopTimes.js';
 
 const config = {
 	sqlitePath: 'gtfs.db',
@@ -33,11 +33,6 @@ const getSelection = (table, idField, list) => {
 	return query;
 };
 
-export const getStops = async (stops) => {
-	let query = getSelection('stops', 'stop_id', stops);
-	return await querySqlite(query);
-};
-
 export const getRoutes = async (stops) => {
 	let query = getSelection('routes', 'route_id', stops);
 	return await querySqlite(query);
@@ -48,4 +43,16 @@ export const getStopTimesByStops = async (stops) => {
 	const stopsObj = stops ? { stop_id: stops } : {};
 	const stopTimes = await getStoptimes(stopsObj).catch((e) => console.log(e));
 	return updateStopTimes(stopTimes);
+};
+
+export const getStopLocations = async (stops) => {
+	await openDb(config);
+	const stopsObj = stops ? { stop_id: stops } : {};
+	return await getStops(stopsObj).catch((e) => console.log(e));
+};
+
+export const getStopTimeLocation = (stops) => {
+	const locations = getStopLocations(stops);
+	const times = getStopTimesByStops(stops);
+	return joinTimesAndLocations(locations, times);
 };
