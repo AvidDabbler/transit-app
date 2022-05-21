@@ -53,7 +53,6 @@ export const getRoutes = async (stops) => {
 
 export const getStopTimesByStops = async (stops) => {
 	await openDb(config);
-	return await getStoptimes({
-		// stop_id: '1',
-	}).catch((e) => console.log(e));
+	const stopsObj = stops ? { stop_id: stops } : {};
+	return await getStoptimes(stopsObj).catch((e) => console.log(e));
 };

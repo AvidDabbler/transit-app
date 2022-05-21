@@ -30,8 +30,8 @@ app.get('/getStops', async (req, res) => {
 });
 
 app.get('/getStopTimes', async (req, res) => {
-	// const stopList = req.query.stops.split(',') ?? null;
-	const queryResponse = await getStopTimesByStops(null);
+	const stopList = req.query.stops.split(',') ?? null;
+	const queryResponse = await getStopTimesByStops(stopList);
 	res.send(queryResponse);
 });
 
