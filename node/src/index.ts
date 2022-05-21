@@ -9,6 +9,12 @@ const port = env?.PORT;
 
 app.use(cors());
 
+
+
+
+
+
+
 app.get('/', (req, res) => {
 	res.send('Welcome to my silly transit app');
 });
