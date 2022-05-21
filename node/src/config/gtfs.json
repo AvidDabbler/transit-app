@@ -1,5 +1,5 @@
 {
-	"sqlitePath": "src/db/gtfs.db",
+	"sqlitePath": "gtfs.db",
 	"agencies": [
 		{
 			"path": "gtfs.zip"

@@ -7,8 +7,8 @@
 	"scripts": {
 		"dev-server": "nodemon node/src/index.js --dev -port 4000",
     "start-server": "node node/src/index.js -port 4000",
-		"gtfs-import": "gtfs-import --configPath src/config/gtfs.json",
-		"gtfs-export": "gtfs-export --configPath src/config/gtfs.json"
+		"gtfs-import": "gtfs-import --configPath node/src/config/gtfs.json",
+		"gtfs-export": "gtfs-export --configPath node/src/config/gtfs.json"
 	},
 	"keywords": [],
 	"author": "",
