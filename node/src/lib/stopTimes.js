@@ -1,0 +1,21 @@
+import { env } from '../index.js';
+import moment from 'moment-timezone';
+
+const paddedNumber = (number) =>
+	number < 10 ? `0${number}` : number.toString();
+
+const updateTime = (time) => {
+	const [hour, min, sec] = time.split(':').map((item) => parseInt(item)); // eslint-disable-line
+	const localHour = moment().tz(env.TIMEZONE).hour() + hour;
+	return `${paddedNumber(localHour)}:${paddedNumber(min)}:${paddedNumber(sec)}`;
+};
+
+export const updateStopTimes = (stopTimes) => {
+	return stopTimes.map((item) => {
+		return {
+			...item,
+			arrival_time: updateTime(item.arrival_time),
+			departure_time: updateTime(item.departure_time),
+		};
+	});
+};
