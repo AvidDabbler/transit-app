@@ -1,9 +1,9 @@
-
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
 export const env = dotenv.config().parsed;
+
 const app = express();
 const port = env?.PORT;
 
