@@ -1,8 +1,17 @@
 .phone-container{
-	@apply border-black border-8 flex align-middle mx-auto rounded-2xl;
+	@apply border-black flex-col border-8 flex align-middle m-auto rounded-2xl;
 	height: 1000px;
 	width: 500px;
+	.top-bar{
+		@apply justify-between flex flex-row z-10 bg-grey rounded-t-xl opacity-25 w-full;
+	}
+	.clock{
+		@apply opacity-100 text-black w-24;
+	}
 	.notch{
-		@apply bg-black h-4 w-44 mx-auto rounded-b-xl;
+		@apply z-20 bg-black h-6 w-44 mx-auto rounded-b-lg;
+	}
+	.notifications{
+		@apply w-24;
 	}
 }

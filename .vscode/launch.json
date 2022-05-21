@@ -5,6 +5,8 @@
 	"version": "0.2.0",
 	"configurations": [
 
+
+
 		{
 			"type": "pwa-node",
 			"request": "launch",
@@ -16,6 +18,13 @@
 			"outFiles": [
 				"${workspaceFolder}/**/*.js"
 			]
-		}
+		},
+		{
+      "type": "pwa-chrome",
+      "request": "launch",
+      "name": "Launch Front",
+      "url": "http://localhost:3001",
+      "webRoot": "${workspaceFolder}/front"
+    }
 	]
 }
