@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev-server": "nodemon node/src/index.js --dev -port 4000",
-    "start-server": "node node/src/index.js -port 4000",
+		"start-server": "node node/src/index.js -port 4000",
 		"dev-front": "cd front && vite",
 		"gtfs-import": "gtfs-import --configPath node/src/config/gtfs.json",
 		"gtfs-export": "gtfs-export --configPath node/src/config/gtfs.json",
@@ -16,6 +16,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@reduxjs/toolkit": "^1.8.1",
 		"axios": "^0.27.2",
 		"body-parser": "^1.20.0",
 		"cors": "^2.8.5",
@@ -25,6 +26,7 @@
 		"gtfs": "^3.3.1",
 		"moment-timezone": "^0.5.34",
 		"node-sql-parser": "^4.3.0",
+		"react-router-dom": "^6.3.0",
 		"s3lite": "^0.0.6",
 		"sqlite3": "^5.0.8"
 	},

@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  @apply text-center;
 }
 
 .App-logo {
@@ -40,3 +40,4 @@
 button {
   font-size: calc(10px + 2vmin);
 }
+
