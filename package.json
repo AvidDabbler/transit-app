@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"type": "module",
 	"scripts": {
+		"install-all": "cd node && npm i && cd ../front && npm i && cd ..",
 		"dev-server": "nodemon node/src/index.js --dev -port 4000",
 		"start-server": "node node/src/index.js -port 4000",
 		"dev-front": "cd front && vite",
