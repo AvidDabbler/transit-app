@@ -9,7 +9,7 @@ export interface RootState {
 	app: AppState;
 }
 
-interface WalkTime {
+export interface WalkTime {
 	time: number;
 	stop_id: string;
 }

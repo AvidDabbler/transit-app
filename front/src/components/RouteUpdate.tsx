@@ -1,17 +1,17 @@
 import React, { useMemo, useState } from 'react';
 import { GiWalkingBoot } from 'react-icons/gi';
 import { IoMdTime } from 'react-icons/io';
-import { mapController } from '../lib/map';
 import { calcDepartTime } from '../lib/time';
-import { StopTime } from '../types';
+import { StopTime, WalkTime } from '../types';
 import { ProgressBar } from './ProgressBar';
 
 interface RouteUpdateProps {
 	time: StopTime;
 	now: number;
+	walkTime: WalkTime | null;
 }
 
-export const RouteUpdate = ({ time, now }: RouteUpdateProps) => {
+export const RouteUpdate = ({ time, now, walkTime }: RouteUpdateProps) => {
 	const departTime = calcDepartTime(now, time.departure_timestamp);
 
 	return (
@@ -21,7 +21,7 @@ export const RouteUpdate = ({ time, now }: RouteUpdateProps) => {
 			<div className="w-2/3 flex flex-col">
 				<div className="flex items-center flex-row my-1 justify-around">
 					<GiWalkingBoot size={30} />
-					<span>{departTime}min</span>
+					<span>{walkTime ? walkTime.time : '--'}min</span>
 				</div>
 				<div className="flex items-center flex-row my-1 justify-around">
 					<IoMdTime size={30} />

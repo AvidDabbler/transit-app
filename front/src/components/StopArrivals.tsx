@@ -1,5 +1,6 @@
 import React, { Fragment, useMemo } from 'react';
-import { StopLocation } from '../types';
+import { useSelector } from 'react-redux';
+import { RootState, StopLocation } from '../types';
 import { StopUpdate } from './StopUpdate';
 
 interface StopArrivalsProps {
@@ -7,13 +8,16 @@ interface StopArrivalsProps {
 }
 
 export const StopArrivals = ({ stops }: StopArrivalsProps) => {
-
+	const walkTimes = useSelector((state: RootState) => state.app.walkTimes);
 
 	return (
 		<Fragment>
 			<div className="bottom-list">
 				{stops.map((stop) => {
-					return <StopUpdate stop={stop} />;
+					const walkTime = walkTimes.find(
+						(time) => time.stop_id === stop.stop_id
+					);
+					return <StopUpdate stop={stop} walkTime={walkTime} />;
 				})}
 			</div>
 		</Fragment>
