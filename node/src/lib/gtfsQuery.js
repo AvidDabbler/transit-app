@@ -39,6 +39,19 @@ const getSelection = (table, idField, list) => {
 	return query;
 };
 
+const addRouteInfo = (mainList, routeList, id) => {
+	return mainList.map((tItem) => {
+		const routeInfo = routeList.find((rItem) => rItem[id] === tItem[id]);
+		console.log('routeInfo', routeInfo);
+		console.log('tItem', tItem);
+		return {
+			...tItem,
+			route_long_name: routeInfo.route_long_name,
+			route_short_name: routeInfo.route_short_name,
+		};
+	});
+};
+
 export const getRoutes = async () => {
 	await openDb(config);
 	return await getRoutesQuery();
@@ -48,23 +61,16 @@ export const getTrips = async () => {
 	await openDb(config);
 	const trips = await getTripsQuery();
 	const routes = await getRoutes();
-	return trips.map((tItem) => {
-		const { route_long_name, route_short_name } = routes.find(
-			(rItem) => rItem.route_id == tItem.route_id
-		);
-		return {
-			...tItem,
-			route_long_name,
-			route_short_name,
-		};
-	});
+	return addRouteInfo(trips, routes, 'route_id');
 };
 
 export const getStopTimesByStops = async (stops) => {
 	await openDb(config);
 	const stopsObj = stops ? { stop_id: stops.split(',') } : {};
+	const trips = await getTrips();
 	const stopTimes = await getStoptimes(stopsObj).catch((e) => console.log(e));
-	return await updateStopTimes(stopTimes);
+	const updatedTimes = addRouteInfo(stopTimes, trips, 'trip_id');
+	return await updateStopTimes(updatedTimes);
 };
 
 export const getStopLocations = async (stops) => {
@@ -76,6 +82,5 @@ export const getStopLocations = async (stops) => {
 export const getStopTimeLocation = async (stops) => {
 	const locations = await getStopLocations(stops);
 	const times = await getStopTimesByStops(stops);
-	const trips = await getTrips();
-	return joinTimesAndLocations(locations, times, trips);
+	return joinTimesAndLocations(locations, times);
 };

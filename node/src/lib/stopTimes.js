@@ -4,8 +4,7 @@ import moment from 'moment-timezone';
 const paddedNumber = (number) =>
 	number < 10 ? `0${number}` : number.toString();
 
-const joinById = (item, attrList, id, trips) => {
-	console.log(trips);
+const joinById = (item, attrList, id) => {
 	const idValue = item[id];
 	const attr = attrList
 		.filter((el) => el[id] === idValue)
@@ -24,7 +23,12 @@ const updateTime = (time) => {
 		time: `${paddedNumber(localHour)}:${paddedNumber(min)}:${paddedNumber(
 			sec
 		)}`,
-		timestamp: moment().hour(hour).minute(min).second(sec).valueOf(),
+		timestamp: moment()
+			.tz(env.TIMEZONE)
+			.hour(hour)
+			.minute(min)
+			.second(sec)
+			.valueOf(),
 	};
 };
 
