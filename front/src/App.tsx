@@ -1,14 +1,15 @@
-import { Fragment, useState } from 'react';
-import logo from './logo.svg';
-import './App.scss';
+import { Fragment, useEffect } from 'react';
 import { Phone } from './components/phone/Phone';
 import { Collapse } from './components/Collapse';
-import { ProgressBar } from './components/ProgressBar';
-import { GiWalkingBoot } from 'react-icons/gi';
-import { IoMdTime } from 'react-icons/io';
 import { RouteUpdate } from './components/RouteUpdate';
+import { updateStops } from './lib/api';
+import './App.scss';
 
 function App() {
+	useEffect(() => {
+		updateStops();
+	}, []);
+
 	return (
 		<div className="App">
 			<Phone>

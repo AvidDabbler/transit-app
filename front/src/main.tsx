@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App'
 import './index.css'
-import { NoPage } from './Roues/NoPage'
+import { NoPage } from './Routes/NoPage'
 import { store } from './store/store'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

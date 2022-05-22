@@ -59,5 +59,5 @@ export const getStopLocations = async (stops) => {
 export const getStopTimeLocation = async (stops) => {
 	const locations = await getStopLocations(stops);
 	const times = await getStopTimesByStops(stops);
-	return joinTimesAndLocations(locations, times);
+	return joinTimesAndLocations(times, locations);
 };
