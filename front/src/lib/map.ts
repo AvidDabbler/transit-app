@@ -33,7 +33,6 @@ class MapController {
 		const curLocation = await curLayer.queryFeatures();
 		const stops = this.map.findLayerById('stops') as __esri.FeatureLayer;
 		const collection = await stops.queryFeatures();
-		console.log(collection);
 
 		const _walkTimes = [];
 		for (const stop of collection.features) {

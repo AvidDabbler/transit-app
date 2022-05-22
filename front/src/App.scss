@@ -22,13 +22,18 @@
 
 
 .ReactCollapse--collapse {
-  height: 60px;
-  overflow-y: scroll;
+  height: 100%;
+  overflow: scroll;
   transition: height 500ms;
+}
+.ReactCollapse--content{
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .progress-bar{
-  @apply h-4 w-full bg-ltGrey rounded-xl m-6;
+  @apply h-4 w-full bg-ltGrey rounded-xl my-6 mr-6;
+  width: 200px;
   .progress{
     @apply h-full bg-red rounded-xl text-right;
   }

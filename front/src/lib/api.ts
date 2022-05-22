@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { store, appActions } from '../store/store';
+import { ApiResponse } from '../types';
 
 const getData = async (route: string, params: any) => {
-	const search = new URLSearchParams(params);
 	return await axios.get(`http://localhost:4000/${route}`);
 };
 
@@ -13,5 +13,14 @@ export const updateStops = async (stops: string[] | null = null) => {
 		stopsListString
 	);
 
-	store.dispatch(appActions.setStops(stopTimes));
+	store.dispatch(
+		appActions.setStops(
+			stopTimes.map((item: ApiResponse) => {
+				return {
+					...item,
+					isOpen: false,
+				};
+			})
+		)
+	);
 };

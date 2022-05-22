@@ -14,7 +14,7 @@ export interface WalkTime {
 	stop_id: string;
 }
 
-export interface StopLocation {
+export interface ApiResponse{
 	stop_id: string;
 	stop_code: null | string;
 	stop_name: string;
@@ -33,6 +33,9 @@ export interface StopLocation {
 	times: StopTime[];
 }
 
+export interface StopLocation extends ApiResponse{
+	isOpen: boolean;
+}
 export interface StopTime {
 	id: number;
 	trip_id: string;

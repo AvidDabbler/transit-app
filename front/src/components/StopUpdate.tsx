@@ -11,7 +11,7 @@ interface StopUpdatePropType {
 export const StopUpdate = ({ stop, walkTime }: StopUpdatePropType) => {
 	const now = new Date().valueOf();
 	return (
-		<Collapse text={stop.stop_name}>
+		<Collapse text={stop.stop_name} isOpen={stop.isOpen} stop_id={stop.stop_id}>
 			<Fragment>
 				{stop.times.map((time: StopTime) => (
 					<RouteUpdate time={time} now={now} walkTime={walkTime} />

@@ -22,5 +22,14 @@ export const appSlice = createSlice({
 		setWalkTimes: (state, action) => {
 			state.walkTimes = action.payload;
 		},
+		setIsOpen: (state, action) => {
+			state.stops = state.stops.map((item) => {
+				if (action.payload == item.stop_id) {
+					return { ...item, isOpen: true };
+				} else {
+					return { ...item, isOpen: false };
+				}
+			});
+		},
 	},
 });

@@ -17,7 +17,11 @@ export const RouteUpdate = ({ time, now, walkTime }: RouteUpdateProps) => {
 	return (
 		<div className="route-stop-info">
 			<h2 className="route-name">{time.route_long_name}</h2>
-			<ProgressBar />
+			{walkTime ? (
+				<ProgressBar walkTime={walkTime.time} departTime={departTime} />
+			) : (
+				<span>--</span>
+			)}
 			<div className="w-2/3 flex flex-col">
 				<div className="flex items-center flex-row my-1 justify-around">
 					<GiWalkingBoot size={30} />

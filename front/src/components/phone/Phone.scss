@@ -17,7 +17,6 @@
 	}
 	.bottom-list{
 		@apply w-full flex-col bg-white overflow-scroll flex align-bottom;
-		height: calc(65% - 2rem);
 		.route-stop-info{
 			@apply flex flex-row text-2xl w-full text-black px-6 py-6 items-center border-y-2 border-ltGrey;
 			.route-name{

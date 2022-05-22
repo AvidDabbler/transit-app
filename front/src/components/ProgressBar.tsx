@@ -1,25 +1,22 @@
 import React from 'react';
 
-export const ProgressBar = () => {
-	const Parentdiv = {
-		height: '20px',
-		width: '100%',
-		backgroundColor: 'whitesmoke',
-		borderRadius: 40,
-		margin: 50,
-	};
+interface ProgressBarType {
+	walkTime: number;
+	departTime: number;
+}
 
-	const Childdiv = {
-		height: '100%',
-		width: `20%`,
-		backgroundColor: 'red',
-		borderRadius: 40,
-		textAlign: 'right',
+export const ProgressBar = ({ walkTime, departTime }: ProgressBarType) => {
+	const progress = () => {
+		const percent = (walkTime / departTime) * 100;
+		if (percent > 100) {
+			return 100;
+		} else {
+			return percent;
+		}
 	};
-
 	return (
-		<div className='progress-bar'>
-			<div className='progress' style={{width: '30%'}}></div>
+		<div className="progress-bar">
+			<div className="progress" style={{ width: `${progress()}%` }}></div>
 		</div>
 	);
 };
