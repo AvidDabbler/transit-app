@@ -43,4 +43,6 @@ export interface StopTime {
 	continuous_drop_off: null | string;
 	shape_dist_traveled: null | string;
 	timepoint: null | string;
+	route_long_name: string;
+	route_short_name: string;
 }
