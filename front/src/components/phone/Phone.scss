@@ -30,7 +30,7 @@
 	}
 	#map{
 		@apply w-full flex;
-		height: 700px;
+		height: 100%;
 	}
 	.bottom-bar{
 		@apply w-full h-24 bg-ltGrey rounded-b-xl flex flex-row justify-between text-red items-center px-12;
