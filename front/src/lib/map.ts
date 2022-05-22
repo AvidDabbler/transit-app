@@ -6,11 +6,10 @@ class MapController {
 	mapView: __esri.MapView;
 
 	initMap = async (): Promise<void> => {
-		const [Map, MapView, FeatureLayer, Point] = await loadModules([
+		const [Map, MapView, FeatureLayer] = await loadModules([
 			'esri/Map',
 			'esri/views/MapView',
 			'esri/layers/FeatureLayer',
-			'esri/geometry/Point',
 		]);
 		this.map = new Map({
 			basemap: 'topo-vector',
