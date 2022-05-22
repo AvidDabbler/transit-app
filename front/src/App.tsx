@@ -13,7 +13,8 @@ function App() {
 	const loadPage = async () => {
 		await mapController.initMap();
 		await mapController.initWalkTime();
-		setInterval(()=>updateStops(), 1000);
+		const timer = setInterval(() => updateStops(), 1000);
+		return () => clearInterval(timer);
 	};
 
 	useEffect(() => {

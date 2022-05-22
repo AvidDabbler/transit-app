@@ -12,7 +12,5 @@ export const updateStops = async (stops: string[] | null = null) => {
 		stopsListString
 	);
 
-	console.log('updated stops');
-
 	store.dispatch(appActions.setStops(stopTimes));
 };
