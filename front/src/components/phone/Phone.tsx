@@ -1,29 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getTime } from '../../lib/time';
 import { RootState } from '../../types';
-import './Phone.scss'
+import { RiMap2Line, RiListUnordered, RiBookmarkLine } from 'react-icons/ri';
+import './Phone.scss';
 
 interface PhonePropsType {
-  children: JSX.Element;
+	children: JSX.Element;
 }
 
-export const Phone = ({children}: PhonePropsType) => {
+export const Phone = ({ children }: PhonePropsType) => {
 	const time = useSelector((state: RootState) => {
-		return state.app.time})
+		return state.app.time;
+	});
 
-	useEffect(()=>{
+	useEffect(() => {
 		getTime();
-	},[])
+	}, []);
 
 	return (
-		<div className='phone-container'>
-			<div className='top-bar'>
-				<div className='notifications' />
-				<div className='notch' />
-				<span className='clock'>{time}</span>
+		<div className="phone-container">
+			<div className="top-bar">
+				<div className="notifications" />
+				<div className="notch" />
+				<span className="clock">{time}</span>
 			</div>
 			{children}
+			<div className="bottom-bar">
+				<button>
+					<RiMap2Line size={60} />
+				</button>
+				<button>
+					<RiListUnordered size={60} />
+				</button>
+				<button>
+					<RiBookmarkLine size={60} />
+				</button>
+			</div>
 		</div>
-	)
-}
+	);
+};

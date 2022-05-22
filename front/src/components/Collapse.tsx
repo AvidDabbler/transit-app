@@ -14,11 +14,9 @@ export const Collapse = ({ text, children }: CollapseType) => {
 		<div>
 			<div className="collapse">
 				<h2 className="h2">{text}</h2>
-				<RiArrowDownSLine
-					onClick={() => setIsOpen(!isOpen)}
-					className="carrot"
-					size={30}
-				/>
+				<button onClick={() => setIsOpen(!isOpen)}>
+					<RiArrowDownSLine className={`carrot ${isOpen? '' : 'closed'}`} size={30} />
+				</button>
 			</div>
 			<Collapsable isOpened={isOpen}>{children}</Collapsable>
 		</div>

@@ -5,6 +5,11 @@
 
 .carrot{
   @apply text-red;
+  transition: all 0.5s;
+  &.closed{
+    @apply rotate-90;
+    transition: all 0.5s;
+  }
 }
 
 .collapse{
@@ -15,8 +20,16 @@
   }
 }
 
+
 .ReactCollapse--collapse {
   height: 60px;
   overflow-y: scroll;
   transition: height 500ms;
+}
+
+.progress-bar{
+  @apply h-4 w-full bg-ltGrey rounded-xl m-6;
+  .progress{
+    @apply h-full bg-red rounded-xl text-right;
+  }
 }
