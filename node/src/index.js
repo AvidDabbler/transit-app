@@ -1,7 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { getRoutes, getStopLocations, getStopTimesByStops } from './lib/gtfsQuery.js';
+import {
+	getRoutes,
+	getStopLocations,
+	getStopTimeLocation,
+	getStopTimesByStops,
+} from './lib/gtfsQuery.js';
 
 export const env = dotenv.config().parsed;
 
@@ -18,26 +23,25 @@ app.get('/routes', (req, res) => {
 });
 
 app.get('/getRoutes', async (req, res) => {
-	const routeList = req.query.routes.split(',');
-	const queryResponse = await getRoutes(routeList);
+	const queryResponse = await getRoutes();
 	res.send(queryResponse);
 });
 
 app.get('/getStops', async (req, res) => {
-	const stopList = req.query.stops.split(',');
+	const stopList = req.query.stops ?? null;
 	const queryResponse = await getStopLocations(stopList);
 	res.send(queryResponse);
 });
 
 app.get('/getStopTimes', async (req, res) => {
-	const stopList = req.query.stops.split(',') ?? null;
+	const stopList = req.query.stops ?? null;
 	const queryResponse = await getStopTimesByStops(stopList);
 	res.send(queryResponse);
 });
 
 app.get('/getStopTimeLocation', async (req, res) => {
-	const stopList = req.query.stops.split(',') ?? null;
-	const queryResponse = await getStopTimesByStops(stopList);
+	const stopList = req.query.stops ?? null;
+	const queryResponse = await getStopTimeLocation(stopList);
 	res.send(queryResponse);
 });
 
