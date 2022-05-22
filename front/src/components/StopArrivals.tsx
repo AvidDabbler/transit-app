@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
-import { StopLocation, StopTime } from '../types';
-import { Collapse } from './Collapse';
-import { RouteUpdate } from './RouteUpdate';
+import { StopLocation } from '../types';
 import { StopUpdate } from './StopUpdate';
 
 interface StopArrivalsProps {
@@ -11,15 +9,7 @@ interface StopArrivalsProps {
 export const StopArrivals = ({ stops }: StopArrivalsProps) => {
 	return (
 		<Fragment>
-			<div className="map"></div>
 			<div className="bottom-list">
-				{/* <Collapse text="Grand & Utah">
-					<Fragment>
-						<RouteUpdate />
-						<RouteUpdate />
-						<RouteUpdate />
-					</Fragment>
-				</Collapse> */}
 				{stops.map((stop) => {
 					return <StopUpdate stop={stop} />;
 				})}

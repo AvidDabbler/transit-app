@@ -27,6 +27,12 @@
 			}
 		}
 	}
+	.phone-content{
+		@apply flex flex-col w-full h-full;
+	}
+	#map{
+		@apply w-full h-full flex;
+	}
 	.bottom-bar{
 		@apply w-full h-28 bg-ltGrey rounded-b-xl flex flex-row justify-between text-red items-center px-12;
 	}
