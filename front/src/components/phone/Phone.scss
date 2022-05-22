@@ -15,11 +15,9 @@
 	.notifications{
 		@apply w-24;
 	}
-	.map{
-		@apply h-2/3 w-full;
-	}
 	.bottom-list{
-		@apply w-full flex-col bg-white overflow-scroll h-3/5 flex align-bottom;
+		@apply w-full flex-col bg-white overflow-scroll flex align-bottom;
+		height: calc(65% - 2rem);
 		.route-stop-info{
 			@apply flex flex-row text-2xl w-full text-black px-6 py-6 items-center border-y-2 border-ltGrey;
 			.route-name{
@@ -28,12 +26,14 @@
 		}
 	}
 	.phone-content{
-		@apply flex flex-col w-full h-full;
+		@apply flex flex-col w-full;
+		height: calc(100% - 5rem);
 	}
 	#map{
-		@apply w-full h-full flex;
+		@apply w-full flex;
+		height: 700px;
 	}
 	.bottom-bar{
-		@apply w-full h-28 bg-ltGrey rounded-b-xl flex flex-row justify-between text-red items-center px-12;
+		@apply w-full h-24 bg-ltGrey rounded-b-xl flex flex-row justify-between text-red items-center px-12;
 	}
 }

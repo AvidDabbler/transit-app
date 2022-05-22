@@ -13,12 +13,14 @@ export const StopArrivals = ({ stops }: StopArrivalsProps) => {
 	return (
 		<Fragment>
 			<div className="bottom-list">
-				{stops.map((stop) => {
-					const walkTime = walkTimes.find(
-						(time) => time.stop_id === stop.stop_id
-					);
-					return <StopUpdate stop={stop} walkTime={walkTime} />;
-				})}
+				<Fragment>
+					{stops.map((stop) => {
+						const walkTime = walkTimes.find(
+							(time) => time.stop_id === stop.stop_id
+						);
+						return <StopUpdate stop={stop} walkTime={walkTime} />;
+					})}
+				</Fragment>
 			</div>
 		</Fragment>
 	);

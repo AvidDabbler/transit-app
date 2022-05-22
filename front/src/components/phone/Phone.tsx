@@ -28,13 +28,13 @@ export const Phone = ({ children }: PhonePropsType) => {
 			{children}
 			<div className="bottom-bar">
 				<button>
-					<RiMap2Line size={45} />
+					<RiMap2Line size={40} />
 				</button>
 				<button>
-					<RiListUnordered size={45} />
+					<RiListUnordered size={40} />
 				</button>
 				<button>
-					<RiBookmarkLine size={45} />
+					<RiBookmarkLine size={40} />
 				</button>
 			</div>
 		</div>

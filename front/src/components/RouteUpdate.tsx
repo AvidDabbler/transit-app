@@ -8,7 +8,7 @@ import { ProgressBar } from './ProgressBar';
 interface RouteUpdateProps {
 	time: StopTime;
 	now: number;
-	walkTime: WalkTime | null;
+	walkTime: WalkTime | undefined;
 }
 
 export const RouteUpdate = ({ time, now, walkTime }: RouteUpdateProps) => {

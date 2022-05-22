@@ -5,7 +5,7 @@ import { RouteUpdate } from './RouteUpdate';
 
 interface StopUpdatePropType {
 	stop: StopLocation;
-	walkTime: WalkTime | null;
+	walkTime: WalkTime | undefined;
 }
 
 export const StopUpdate = ({ stop, walkTime }: StopUpdatePropType) => {
