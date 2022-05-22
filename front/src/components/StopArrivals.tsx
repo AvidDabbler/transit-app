@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from 'react';
+import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState, StopLocation } from '../types';
 import { StopUpdate } from './StopUpdate';
