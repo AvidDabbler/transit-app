@@ -5,6 +5,7 @@ import {
 	getStoptimes,
 	getRoutes as getRoutesQuery,
 	openDb,
+	getTrips as getTripsQuery,
 } from 'gtfs';
 import { joinTimesAndLocations, updateStopTimes } from './stopTimes.js';
 
@@ -43,6 +44,22 @@ export const getRoutes = async () => {
 	return await getRoutesQuery();
 };
 
+export const getTrips = async () => {
+	await openDb(config);
+	const trips = await getTripsQuery();
+	const routes = await getRoutes();
+	return trips.map((tItem) => {
+		const { route_long_name, route_short_name } = routes.find(
+			(rItem) => rItem.route_id == tItem.route_id
+		);
+		return {
+			...tItem,
+			route_long_name,
+			route_short_name,
+		};
+	});
+};
+
 export const getStopTimesByStops = async (stops) => {
 	await openDb(config);
 	const stopsObj = stops ? { stop_id: stops.split(',') } : {};
@@ -59,5 +76,6 @@ export const getStopLocations = async (stops) => {
 export const getStopTimeLocation = async (stops) => {
 	const locations = await getStopLocations(stops);
 	const times = await getStopTimesByStops(stops);
-	return joinTimesAndLocations(times, locations);
+	const trips = await getTrips();
+	return joinTimesAndLocations(locations, times, trips);
 };

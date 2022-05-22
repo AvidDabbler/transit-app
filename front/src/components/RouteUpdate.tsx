@@ -1,12 +1,17 @@
 import React from 'react';
 import { GiWalkingBoot } from 'react-icons/gi';
 import { IoMdTime } from 'react-icons/io';
+import { StopTime } from '../types';
 import { ProgressBar } from './ProgressBar';
 
-export const RouteUpdate = () => {
+interface RouteUpdateProps {
+	time: StopTime;
+}
+
+export const RouteUpdate = ({ time }: RouteUpdateProps) => {
 	return (
 		<div className="route-stop-info">
-			<h2 className="route-name">Route 1</h2>
+			<h2 className="route-name">{time.}</h2>
 			<ProgressBar />
 			<div className="w-2/3 flex flex-col">
 				<div className="flex items-center flex-row my-1 justify-around">

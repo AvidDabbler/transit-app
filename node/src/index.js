@@ -6,6 +6,7 @@ import {
 	getStopLocations,
 	getStopTimeLocation,
 	getStopTimesByStops,
+	getTrips,
 } from './lib/gtfsQuery.js';
 
 export const env = dotenv.config().parsed;
@@ -24,6 +25,11 @@ app.get('/routes', (req, res) => {
 
 app.get('/getRoutes', async (req, res) => {
 	const queryResponse = await getRoutes();
+	res.send(queryResponse);
+});
+
+app.get('/getTrips', async (req, res) => {
+	const queryResponse = await getTrips();
 	res.send(queryResponse);
 });
 
