@@ -13,14 +13,7 @@ export const updateStops = async (stops: string[] | null = null) => {
 		stopsListString
 	);
 
-	store.dispatch(
-		appActions.setStops(
-			stopTimes.map((item: ApiResponse) => {
-				return {
-					...item,
-					isOpen: false,
-				};
-			})
-		)
-	);
+	console.log('updated stops');
+
+	store.dispatch(appActions.setStops(stopTimes));
 };

@@ -13,8 +13,8 @@ function App() {
 	const loadPage = async () => {
 		await mapController.initMap();
 		await mapController.initWalkTime();
-		updateStops();
-	}
+		setInterval(()=>updateStops(), 1000);
+	};
 
 	useEffect(() => {
 		loadPage();
@@ -23,7 +23,7 @@ function App() {
 	return (
 		<div className="App">
 			<Phone>
-				<div className='phone-content'>
+				<div className="phone-content">
 					<div id="map" />
 					{stops && <StopArrivals stops={stops} />}
 				</div>

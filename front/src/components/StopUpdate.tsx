@@ -1,5 +1,8 @@
+import { stat } from 'fs';
 import React, { Fragment, useMemo, useState } from 'react';
-import { StopLocation, StopTime, WalkTime } from '../types';
+import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { RootState, StopLocation, StopTime, WalkTime } from '../types';
 import { Collapse } from './Collapse';
 import { RouteUpdate } from './RouteUpdate';
 
@@ -10,8 +13,12 @@ interface StopUpdatePropType {
 
 export const StopUpdate = ({ stop, walkTime }: StopUpdatePropType) => {
 	const now = new Date().valueOf();
+	const activeStop = useSelector((state: RootState) => state.app.activeStop);
 	return (
-		<Collapse text={stop.stop_name} isOpen={stop.isOpen} stop_id={stop.stop_id}>
+		<Collapse
+			text={stop.stop_name}
+			isOpen={activeStop === stop.stop_id}
+			stop_id={stop.stop_id}>
 			<Fragment>
 				{stop.times.map((time: StopTime) => (
 					<RouteUpdate time={time} now={now} walkTime={walkTime} />

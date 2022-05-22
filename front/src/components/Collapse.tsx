@@ -17,7 +17,7 @@ export const Collapse = ({ stop_id, isOpen, text, children }: CollapseType) => {
 		<div className="h-full">
 			<div className="collapse">
 				<h2 className="h2">{text}</h2>
-				<button onClick={() => dispatch(appActions.setIsOpen(stop_id))}>
+				<button onClick={() => dispatch(appActions.setActiveStop(stop_id))}>
 					<RiArrowDownSLine
 						className={`carrot ${isOpen ? '' : 'closed'}`}
 						size={30}

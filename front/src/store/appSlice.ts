@@ -6,6 +6,7 @@ const initialState: AppState = {
 	date: '',
 	stops: [],
 	walkTimes: [],
+	activeStop: null,
 };
 
 export const appSlice = createSlice({
@@ -22,14 +23,12 @@ export const appSlice = createSlice({
 		setWalkTimes: (state, action) => {
 			state.walkTimes = action.payload;
 		},
-		setIsOpen: (state, action) => {
-			state.stops = state.stops.map((item) => {
-				if (action.payload == item.stop_id) {
-					return { ...item, isOpen: !item.isOpen };
-				} else {
-					return { ...item, isOpen: false };
-				}
-			});
+		setActiveStop: (state, action) => {
+			if (state.activeStop === action.payload) {
+				state.activeStop = null;
+			} else {
+				state.activeStop = action.payload;
+			}
 		},
 	},
 });

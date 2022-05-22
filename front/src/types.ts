@@ -3,6 +3,7 @@ export interface AppState {
 	date: string;
 	stops: StopLocation[];
 	walkTimes: WalkTime[];
+	activeStop: string | null;
 }
 
 export interface RootState {
