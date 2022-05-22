@@ -25,7 +25,7 @@ const updateTime = (time) => {
 		)}`,
 		timestamp: moment()
 			.tz(env.TIMEZONE)
-			.hour(hour)
+			.hour(localHour)
 			.minute(min)
 			.second(sec)
 			.valueOf(),

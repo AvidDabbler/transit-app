@@ -69,8 +69,12 @@ export const getStopTimesByStops = async (stops) => {
 	const stopsObj = stops ? { stop_id: stops.split(',') } : {};
 	const trips = await getTrips();
 	const stopTimes = await getStoptimes(stopsObj).catch((e) => console.log(e));
-	const updatedTimes = addRouteInfo(stopTimes, trips, 'trip_id');
-	return await updateStopTimes(updatedTimes);
+	const currentTimestamp = new Date().valueOf();
+	const stopTimeswithRoute = addRouteInfo(stopTimes, trips, 'trip_id');
+	const updatedTimes = await updateStopTimes(stopTimeswithRoute);
+	return updatedTimes.filter(
+		(time) => time.departure_timestamp > currentTimestamp
+	);
 };
 
 export const getStopLocations = async (stops) => {
