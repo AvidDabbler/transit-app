@@ -1,11 +1,11 @@
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Phone } from './components/phone/Phone';
 import { updateStops } from './lib/api';
-import './App.scss';
 import { StopArrivals } from './components/StopArrivals';
 import { useSelector } from 'react-redux';
 import { RootState } from './types';
 import { mapController } from './lib/map';
+import './App.scss';
 
 function App() {
 	const stops = useSelector((state: RootState) => state.app.stops);

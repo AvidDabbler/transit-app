@@ -1,7 +1,5 @@
-import { stat } from 'fs';
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { Fragment} from 'react';
 import { useSelector } from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
 import { RootState, StopLocation, StopTime, WalkTime } from '../types';
 import { Collapse } from './Collapse';
 import { RouteUpdate } from './RouteUpdate';

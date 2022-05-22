@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { store, appActions } from '../store/store';
-import { ApiResponse } from '../types';
 
 const getData = async (route: string, params: any) => {
 	return await axios.get(`http://localhost:4000/${route}`);
