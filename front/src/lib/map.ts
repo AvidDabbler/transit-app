@@ -1,28 +1,66 @@
 import { loadModules } from 'esri-loader';
 import { layers } from '../config/layers';
-
-const constantLocation = [];
-
+import { appActions, store } from '../store/store';
 class MapController {
-	initMap = async () => {
-		const [Map, MapView, FeatureLayer] = await loadModules([
+	map: __esri.Map;
+	mapView: __esri.MapView;
+
+	initMap = async (): Promise<void> => {
+		const [Map, MapView, FeatureLayer, Point] = await loadModules([
 			'esri/Map',
 			'esri/views/MapView',
-			'esri/layers/FeatureLayer'
+			'esri/layers/FeatureLayer',
+			'esri/geometry/Point',
 		]);
-		const map = new Map({
+		this.map = new Map({
 			basemap: 'topo-vector',
 		});
 
-		
-		const mapView = new MapView({
-			map: map,
+		this.mapView = new MapView({
+			map: this.map,
 			center: [-90.25624589935357, 38.605587033835604],
 			zoom: 15,
 			container: 'map',
 		});
-		
-		map.addMany(layers.map(layer => new FeatureLayer(layer)));
+
+		this.map.addMany(layers.map((layer) => new FeatureLayer(layer)));
+	};
+
+	initWalkTime = async () => {
+		const curLayer = this.map.findLayerById(
+			'current_location'
+		) as __esri.FeatureLayer;
+		const curLocation = await curLayer.queryFeatures();
+		const stops = this.map.findLayerById('stops') as __esri.FeatureLayer;
+		const collection = await stops.queryFeatures();
+		console.log(collection);
+
+		const _walkTimes = [];
+		for (const stop of collection.features) {
+			_walkTimes.push(
+				await this.calcWalkTime(stop, curLocation.features.at(0))
+			);
+		}
+		store.dispatch(appActions.setWalkTimes(_walkTimes));
+	};
+
+	calcWalkTime = async (
+		stop: __esri.Graphic,
+		location: __esri.Graphic | any
+	): Promise<{ time: number; stop_id: string } | void> => {
+		if (!this.map || !this.mapView) return;
+		const [geometryEngine] = await loadModules([
+			'esri/geometry/geometryEngine',
+		]);
+
+		return {
+			time: Math.floor(
+				(geometryEngine.distance(stop.geometry, location.geometry, 'miles') /
+					3) *
+					60
+			),
+			stop_id: stop.attributes.stop_id,
+		};
 	};
 }
 

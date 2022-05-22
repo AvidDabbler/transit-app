@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { GiWalkingBoot } from 'react-icons/gi';
 import { IoMdTime } from 'react-icons/io';
+import { mapController } from '../lib/map';
 import { calcDepartTime } from '../lib/time';
 import { StopTime } from '../types';
 import { ProgressBar } from './ProgressBar';
@@ -12,6 +13,7 @@ interface RouteUpdateProps {
 
 export const RouteUpdate = ({ time, now }: RouteUpdateProps) => {
 	const departTime = calcDepartTime(now, time.departure_timestamp);
+
 	return (
 		<div className="route-stop-info">
 			<h2 className="route-name">{time.route_long_name}</h2>

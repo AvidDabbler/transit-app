@@ -6,7 +6,6 @@
 	"configurations": [
 
 
-
 		{
 			"type": "pwa-node",
 			"request": "launch",
@@ -23,7 +22,7 @@
       "type": "pwa-chrome",
       "request": "launch",
       "name": "Launch Front",
-      "url": "http://localhost:3001",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/front"
     }
 	]

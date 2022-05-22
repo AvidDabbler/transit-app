@@ -42,8 +42,6 @@ const getSelection = (table, idField, list) => {
 const addRouteInfo = (mainList, routeList, id) => {
 	return mainList.map((tItem) => {
 		const routeInfo = routeList.find((rItem) => rItem[id] === tItem[id]);
-		console.log('routeInfo', routeInfo);
-		console.log('tItem', tItem);
 		return {
 			...tItem,
 			route_long_name: routeInfo.route_long_name,

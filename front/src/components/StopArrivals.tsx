@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import { StopLocation } from '../types';
 import { StopUpdate } from './StopUpdate';
 
@@ -7,6 +7,8 @@ interface StopArrivalsProps {
 }
 
 export const StopArrivals = ({ stops }: StopArrivalsProps) => {
+
+
 	return (
 		<Fragment>
 			<div className="bottom-list">

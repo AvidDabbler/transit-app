@@ -5,6 +5,7 @@ const initialState: AppState = {
 	time: '',
 	date: '',
 	stops: [],
+	walkTimes: [],
 };
 
 export const appSlice = createSlice({
@@ -17,6 +18,9 @@ export const appSlice = createSlice({
 		},
 		setStops: (state, action) => {
 			state.stops = action.payload;
+		},
+		setWalkTimes: (state, action) => {
+			state.walkTimes = action.payload;
 		},
 	},
 });

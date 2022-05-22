@@ -2,10 +2,16 @@ export interface AppState {
 	time: string;
 	date: string;
 	stops: StopLocation[];
+	walkTimes: WalkTime[];
 }
 
 export interface RootState {
 	app: AppState;
+}
+
+interface WalkTime {
+	time: number;
+	stop_id: string;
 }
 
 export interface StopLocation {

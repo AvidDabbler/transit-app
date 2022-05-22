@@ -10,9 +10,14 @@ import { mapController } from './lib/map';
 function App() {
 	const stops = useSelector((state: RootState) => state.app.stops);
 
-	useEffect(() => {
-		mapController.initMap();
+	const loadPage = async () => {
+		await mapController.initMap();
+		await mapController.initWalkTime();
 		updateStops();
+	}
+
+	useEffect(() => {
+		loadPage();
 	}, []);
 
 	return (
